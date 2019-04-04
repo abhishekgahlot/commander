@@ -1,0 +1,20 @@
+{
+  "processes": [
+    {
+      "id": "7a035708-308a-4794-9622-e93e42f31486",
+      "command": "ls"
+    },
+    {
+      "id": "5ba66a96-e578-460d-a103-9f5158b79a56",
+      "command": "ls"
+    },
+    {
+      "id": "1c2aa6ae-031a-40c9-b725-d840b11ac7a4",
+      "command": "instaloader profile abhishek_gahlot"
+    },
+    {
+      "id": "2a3b5f3e-97c3-48b8-ad47-e5626c3033b3",
+      "command": "instaloader profile priyankachopra"
+    }
+  ]
+}
