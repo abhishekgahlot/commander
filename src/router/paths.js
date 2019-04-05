@@ -10,7 +10,7 @@ export default [
     }
   },  
   {
-    path: '/show',
+    path: '/show/:uuid',
     meta: { breadcrumb: true },
     name: 'Show',
     component: () => import(

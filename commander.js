@@ -15,7 +15,7 @@ class Commander{
   
   async startProcess() {
     const uuid = this.uuidv4();
-    const { stdout, stderr } = exec(`${this.sysCommand} &> /dev/stdout | tee -a ` + '${LOG}' +` > processes/${uuid} &`);
+    const { stdout, stderr } = exec(`${this.sysCommand} > processes/${uuid} &`);
     return uuid;
   }
 }

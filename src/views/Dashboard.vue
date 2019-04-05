@@ -6,7 +6,7 @@
             v-for="item in processList"
             :key="item.id"
             avatar
-            :href="item.id"
+            :href="'show/'+item.id"
             @click=""
           >
             <v-list-tile-content>

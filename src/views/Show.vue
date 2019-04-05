@@ -1,13 +1,18 @@
 <template>
   <div id="pageShow">
     <v-container grid-list-xl fluid>
-      {{ data }}
+      <h3>Logs for {{ uuid }}</h3>
+      <h4>Command Executed: {{ currentCommand }}</h4>
+      <Prism language="javascript" >{{ data }}</Prism>
     </v-container>
   </div>
 </template>
 
 <script>
 import API from '@/api';
+import 'prismjs'
+import 'prismjs/themes/prism.css'
+import Prism from 'vue-prism-component'
 import axios from "axios";
 import EChart from '@/components/chart/echart';
 import MiniStatistic from '@/components/widgets/statistic/MiniStatistic';
@@ -39,20 +44,36 @@ export default {
     CircleStatistic,
     LinearStatistic,
     PlainTable,
-    PlainTableOrder    
+    PlainTableOrder,
+    Prism
   },
   data: () => ({
-    uuid: this.$route.params.uuid,
-    data: []
+    uuid: "",
+    data: "Loading...",
+    currentCommand: "Loading..."
   }),
   mounted() {
-    axios({ method: "GET", "url": "/get/" + this.uuid }).then(result => {
-        this.data = result.data.data;
-    }, error => {
-        console.error(error);
-    });
+    this.fetchLogs()
   },
 
+  methods: {
+    fetchLogs() {
+      axios({ method: "GET", "url": "/getall" }).then(result => {
+          this.processList = result.data.data;
+          this.currentCommand = this.processList.filter(i => i.id ===  window.location.pathname.split('/').pop())[0].command;
+      }, error => {
+          console.error(error);
+      });
+      setInterval(() => {
+        this.uuid = window.location.pathname.split('/').pop();
+        axios({ method: "GET", "url": "/get/" + this.uuid }).then(result => {
+            this.data = JSON.parse(result.data.data);
+        }, error => {
+            console.error(error);
+        });
+      }, 5000);
+    }
+  },
   computed: {
     
   },
