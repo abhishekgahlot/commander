@@ -15,7 +15,7 @@
     "lowdb": "^1.0.0",
     "nprogress": "^0.2.0",
     "prismjs": "^1.16.0",
-    "quill": "^1.3.6",
+    "quill": "^1.3.7",
     "register-service-worker": "^1.5.2",
     "roboto-fontface": "*",
     "vee-validate": "^2.1.4",
